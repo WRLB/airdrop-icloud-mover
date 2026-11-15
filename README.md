@@ -17,7 +17,24 @@
 - **어떻게 옮기나:** 기본 구성의 Mac에서는 `/private/tmp`와 iCloud Drive가 같은 디스크 볼륨이라 복사가 아니라 위치만 바꿉니다. 즉시 끝나고 디스크를 더 쓰지 않으며, 파일 내용과 속성도 그대로 남습니다. 볼륨이 다르면 macOS의 `mv`가 복사한 뒤 원본을 지웁니다.
 - **같은 이름이 있으면:** 덮어쓰지 않고 `사진 (2).HEIC`처럼 번호를 붙입니다.
 
-## 사용법
+## AI에게 설치 맡기기
+Claude Code, Codex처럼 터미널 명령을 실행할 수 있는 AI 도구에 아래 글을 그대로 붙여 넣으면 됩니다. AI가 코드를 먼저 읽고, 옮겨질 파일을 보여 준 뒤 동의를 받고 설치합니다.
+
+```text
+이 Mac에 AirDrop iCloud Mover(https://github.com/WRLB/airdrop-icloud-mover)를 설치해 줘. 아래 순서를 지켜.
+
+1. git 없이 새 임시 폴더에 받아:
+   d=$(mktemp -d) && curl -fsSL https://github.com/WRLB/airdrop-icloud-mover/archive/refs/heads/main.tar.gz | tar -xz -C "$d" && echo "$d/airdrop-icloud-mover-main"
+   이후 명령은 출력된 폴더 안에서 실행해.
+2. README.md와 mover.sh를 끝까지 읽고, 이 스크립트가 내 Mac에서 무엇을 만들고 바꾸는지 짧게 요약해 줘.
+3. /bin/bash mover.sh check 를 실행하고 결과를 보여 줘. 오류로 끝나면 설치하지 말고 이유를 설명해.
+4. 옮겨질 파일 목록과 설치 위치를 알려 주고 내 동의를 받아. 동의하면 printf 'y\n' | /bin/bash mover.sh install 로 설치해.
+5. 작은 사진 하나를 AirDrop으로 보내 달라고 나에게 요청하고, 보낸 뒤 /bin/bash "$HOME/Library/Application Support/AirDrop iCloud Mover/mover.sh" status 결과에 MOVED가 있는지 확인해 줘.
+
+sudo는 쓰지 마. ~/Downloads 링크와 시스템 설정(전체 디스크 접근 권한 포함)은 바꾸지 마. 문제가 생기면 README의 "문제가 생기면" 항목을 보고, 무엇을 할지 나에게 먼저 물어봐.
+```
+
+## 직접 설치하기
 이 저장소의 **Code → Download ZIP**으로 받아 압축을 풀고 터미널을 엽니다. `cd `(뒤에 공백 한 칸)를 입력하고, 풀린 폴더를 터미널 창으로 끌어다 놓은 뒤 Return을 누릅니다.
 
 **1. 확인만 하기** (아무것도 바꾸지 않음)
