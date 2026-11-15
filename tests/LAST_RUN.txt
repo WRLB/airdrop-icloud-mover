@@ -1,0 +1,13 @@
+PASS only top-level AirDrop files move
+PASS content and quarantine kept
+PASS collisions never overwrite
+PASS waits until the file stops changing
+PASS files open for writing wait (real lsof)
+PASS read-only open files still move
+PASS odd file names
+PASS failed move keeps source and logs once per run
+PASS destination must be iCloud via symlink
+PASS log rotation
+PASS LaunchAgent plist
+PASS default check is read-only; syntax
+ALL TESTS PASSED (26.6.2, GNU bash, version 3.2.57(1)-release)
